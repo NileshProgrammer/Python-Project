@@ -1,0 +1,61 @@
+import csv
+import glob
+import os
+from collections import defaultdict
+
+# Checking file in directory
+
+path = '#Directory Path'
+
+extension = 'csv'
+
+os.chdir(path)
+
+result = [i for i in glob.glob('*.{}'.format(extension))]
+
+# print(result)
+
+paths = []
+
+header = []
+
+values = []
+
+header1 = []
+
+values1 = []
+d = []
+for i in range(0, len(result)):
+    paths.append(f'{path}/{result[i]}')
+
+for i in range(0, len(paths)):
+
+    with open(f'{paths[i]}') as csvfile:
+
+        readCSV = csv.reader(csvfile, delimiter=',')
+
+        for row in readCSV:
+            header.append(row[0])
+
+            values.append(row[1])
+
+    # print(header)
+
+    # print(values)
+
+    d["string{0}".format(i)] = dict(zip(header, values))
+
+    header = []
+
+    values = []
+
+# (d['string0'])
+
+dd = defaultdict(list)
+
+for d in (d['string0'], d['string1']):  # you can list as many input dicts as you want here
+
+    for key, value in d.items():
+        dd[key].append(value)
+
+print(dd)

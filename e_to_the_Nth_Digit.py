@@ -8,6 +8,7 @@ def factorial(n):
     return factorials
 
 
+# noinspection PyShadowingNames,PyShadowingNames
 def compute_e(n):
     decimal.getcontext().prec = n + 1
     e = 2
