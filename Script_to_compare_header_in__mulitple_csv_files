@@ -1,0 +1,13 @@
+import os
+import pandas as pd
+directory = 'CSV'
+for filename in os.listdir(directory):
+    if filename.endswith('.csv'):
+        df = pd.read_csv(directory+'/'+filename)
+        if(filename=='Book1.csv'): #this file contain columns which are required
+            first_list_columns = list(df.columns)
+        second_list_columns = list(df.columns)
+        if first_list_columns == second_list_columns:
+            print(f'{filename}  is Matching') 
+        else:
+            print(f'{filename}  is not Matching')
